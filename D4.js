@@ -114,11 +114,46 @@ console.log(reverseString("Great World"));
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
-function upperFirst(str) {
+/*function upperFirst(str) {
   return str[0].toUpperCase() + str.slice(1).toLowerCase(); //AIUTOOO!!!
 }
 
-console.log(upperFirst("madonnina"));
+console.log(upperFirst("madonnina mia mettimi la maiuscola"));*/
+
+/*function upperFirst(str) {
+  let arrWords = str.split(" ");
+  let completeSentence = " ";
+
+  for (let i = 0; i < arrWords.length; i++) {
+    let singleWord = arrWords[i];
+    let firstLetter = singleWord.charAt(0).toUpperCase();
+    let otherLetters = singleWord.slice(1);
+
+    let completeWord = firstLetter + otherLetters;
+
+    completeSentence.concat(completeWord) + " ";
+  }
+  console.log(completeSentence);
+}
+
+console.log(upperFirst("Ciaone a tutti"));*/
+
+function upperFirst(str) {
+  let words = str.split(" ");
+  let wordsCapitalized = [];
+
+  for (let i = 0; i < words.length; i++) {
+    let w = words[i];
+    let firstLetter = w.charAt(0).toUpperCase();
+    let remainingLetter = w.slice(1);
+    let completWord = firstLetter + remainingLetter;
+    wordsCapitalized.push(completWord);
+  }
+  let completeSentence = wordsCapitalized.join(" ");
+  return completeSentence;
+}
+
+console.log(upperFirst("Amo la pappa pronta"));
 
 /* ESERCIZIO 9
  Scrivi una funzione di nome "cutString", che riceve come parametro una stringa. La funzione deve creare una nuova stringa senza il primo e l'ultimo carattere
@@ -130,7 +165,7 @@ function cutString(str) {
   return str.slice(1, -1);
 }
 
-console.log(cutString("oddiomio"));
+console.log(cutString("hello fckn world"));
 
 /* ESERCIZIO 10
  Scrivi una funzione di nome "giveMeRandom", che accetta come parametro un numero n e ritorna un'array contenente n numeri casuali inclusi tra 0 e 10.
@@ -140,12 +175,11 @@ console.log(cutString("oddiomio"));
 
 function giveMeRandom(n) {
   let arrNumbers = [];
-  let randomNum = Math.floor(Math.random() * 11);
-
-  for (let n = 0; n < randomNum; n++) {
-    //AIUTOOO!!!
-    return arrNumbers.push(randomNum * n);
+  for (let i = 0; i < n; i++) {
+    let randomNum = Math.floor(Math.random() * 11);
+    arrNumbers.push(randomNum);
   }
+  return arrNumbers;
 }
 
-console.log(giveMeRandom(90));
+console.log(giveMeRandom(100));
