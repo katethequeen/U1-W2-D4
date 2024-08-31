@@ -8,7 +8,7 @@ function area(l1, l2) {
   return l1 * l2;
 }
 
-console.log(area(8, 9));
+console.log(area(5, 3));
 
 /* ESERCIZIO 2
  Scrivi una funzione di nome "crazySum", che riceve due numeri interi come parametri.
@@ -18,14 +18,15 @@ console.log(area(8, 9));
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
-function crazySum(num1, num2) {
-  if (num1 === num1 && num2 === num2) {
-    return (num1 + num2) * 3;
+function crazySum(n1, n2) {
+  if (n1 === n2) {
+    return (n1 + n2) * 3;
   } else {
-    return num1 + num2;
+    return n1 + n2;
   }
 }
-console.log(crazySum(4, 2));
+
+console.log(crazySum(2, 3));
 
 /* ESERCIZIO 3
  Scrivi una funzione di nome "crazyDiff" che calcola la differenza assoluta tra un numero fornito come parametro e 19.
@@ -34,14 +35,15 @@ console.log(crazySum(4, 2));
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
-function crazyDiff(num) {
-  if (num > 19) {
-    return Math.abs(num - 19) * 3;
+function crazyDiff(n1, n2 = 19) {
+  if (n1 > 19) {
+    return Math.abs((n1 - n2) * 3);
+  } else {
+    return Math.abs(n1 - n2);
   }
-  return Math.abs(num - 19);
 }
 
-console.log(crazyDiff(21));
+console.log(crazyDiff(24));
 
 /* ESERCIZIO 4
  Scrivi una funzione di nome "boundary" che accetta un numero intero n come parametro, e ritorna true se n è compreso tra 20 e 100 (incluso) oppure
@@ -51,14 +53,12 @@ console.log(crazyDiff(21));
 /* SCRIVI QUI LA TUA RISPOSTA */
 
 function boundary(n) {
-  if ((n > 20 && n <= 100) || n === 400) {
+  if ((n >= 20 && n <= 100) || n === 400) {
     return true;
-  } else {
-    return false;
   }
 }
 
-console.log(boundary(400));
+console.log(boundary(20));
 
 /* ESERCIZIO 5
  Scrivi una funzione di nome "epify" che accetta una stringa come parametro.
@@ -76,7 +76,7 @@ function epify(str) {
   }
 }
 
-console.log(epify("ciaone"));
+console.log(epify("EPICODE cavolini marci"));
 
 /* ESERCIZIO 6
  Scrivi una funzione di nome "check3and7" che accetta un numero positivo come parametro. La funzione deve controllare che il parametro sia un multiplo
@@ -84,28 +84,27 @@ console.log(epify("ciaone"));
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
-function check3and7(valor) {
-  if (valor > 0 && valor % 7 === 0) {
-    return "Il valore è positivo ed è un multiplo di 7";
-  } else if (valor > 0 && valor % 3 === 0) {
-    return "Il valore è positivo ed è un multiplo di 3";
-  } else {
-    return "Il valore non è valido essendo negativo";
+
+function check3and7(n) {
+  if (n % 3 === 0 || n % 7 === 0) {
+    console.log("Il numero è multiplo di 3/7!!!");
   }
 }
 
-console.log(check3and7(-7));
+check3and7(14);
 
 /* ESERCIZIO 7
  Scrivi una funzione di nome "reverseString", il cui scopo è invertire una stringa fornita come parametro (es. "EPICODE" --> "EDOCIPE")
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+
 function reverseString(str) {
-  return str.split("").reverse().join("");
+  let arrStr = str.split("");
+  return arrStr.reverse().join("");
 }
 
-console.log(reverseString("Great World"));
+console.log(reverseString("Acciderbola"));
 
 /* ESERCIZIO 8
  Scrivi una funzione di nome "upperFirst", che riceve come parametro una stringa formata da diverse parole.
@@ -114,46 +113,15 @@ console.log(reverseString("Great World"));
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
-/*function upperFirst(str) {
-  return str[0].toUpperCase() + str.slice(1).toLowerCase(); //AIUTOOO!!!
-}
-
-console.log(upperFirst("madonnina mia mettimi la maiuscola"));*/
-
-/*function upperFirst(str) {
-  let arrWords = str.split(" ");
-  let completeSentence = " ";
-
-  for (let i = 0; i < arrWords.length; i++) {
-    let singleWord = arrWords[i];
-    let firstLetter = singleWord.charAt(0).toUpperCase();
-    let otherLetters = singleWord.slice(1);
-
-    let completeWord = firstLetter + otherLetters;
-
-    completeSentence.concat(completeWord) + " ";
-  }
-  console.log(completeSentence);
-}
-
-console.log(upperFirst("Ciaone a tutti"));*/
-
 function upperFirst(str) {
-  let words = str.split(" ");
-  let wordsCapitalized = [];
-
-  for (let i = 0; i < words.length; i++) {
-    let w = words[i];
-    let firstLetter = w.charAt(0).toUpperCase();
-    let remainingLetter = w.slice(1);
-    let completWord = firstLetter + remainingLetter;
-    wordsCapitalized.push(completWord);
+  let letters = str.split("");
+  for (let i = 0; i < letters.length; i++) {
+    letters[i] = letters[i][0].toUpperCase() + letters[i].slice(1);
   }
-  let completeSentence = wordsCapitalized.join(" ");
-  return completeSentence;
+  return letters.join("");
 }
 
-console.log(upperFirst("Amo la pappa pronta"));
+console.log(upperFirst("Cavolini amari, porca la miseriaccia"));
 
 /* ESERCIZIO 9
  Scrivi una funzione di nome "cutString", che riceve come parametro una stringa. La funzione deve creare una nuova stringa senza il primo e l'ultimo carattere
@@ -161,11 +129,12 @@ console.log(upperFirst("Amo la pappa pronta"));
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+
 function cutString(str) {
   return str.slice(1, -1);
 }
 
-console.log(cutString("hello fckn world"));
+console.log(cutString("ciaone"));
 
 /* ESERCIZIO 10
  Scrivi una funzione di nome "giveMeRandom", che accetta come parametro un numero n e ritorna un'array contenente n numeri casuali inclusi tra 0 e 10.
@@ -173,13 +142,14 @@ console.log(cutString("hello fckn world"));
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
+const RandomArr = [];
+
 function giveMeRandom(n) {
-  let arrNumbers = [];
   for (let i = 0; i < n; i++) {
     let randomNum = Math.floor(Math.random() * 11);
-    arrNumbers.push(randomNum);
+    RandomArr.push(randomNum);
   }
-  return arrNumbers;
+  return RandomArr;
 }
 
-console.log(giveMeRandom(100));
+console.log(giveMeRandom(55));
